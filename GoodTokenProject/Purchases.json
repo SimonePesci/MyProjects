@@ -1,0 +1,28 @@
+{
+  "purchases": [
+    {
+      "purchaseCode": "T8JBeOFbvlZRoekCXh7nR6fOU5ujNQbdTA0Ut4B2IygOilkzQZEWFfLBpPgbLz1t",
+      "stockID": "ecMvUzkL",
+      "stockSize": 1000,
+      "remainingAmount": 990,
+      "lastKnownH": "e8f21844437b0f8dab21f8b2c792373ccedbb72f03fe396884fe2f2c42b2ed93",
+      "startDate": 1652203257899,
+      "endDate": 1652203557899,
+      "BuyerAddress": "0x132faBF202567b94E183789A60F0C1ac537D24A2",
+      "h_0": "oX8tueBsp4wIRj7pQmSbSA95MOb6GTw7ZsLoFcOHvBNcT5ZuNMZBwZfnpj8RrJHA",
+      "Rest_Given": true
+    },
+    {
+      "purchaseCode": "RfkgFbwXjT5xbBRZuvLeRNYA4iqCPPfID7H3RlafKZ3MJYVTrwsCHFcQllEZTWC0",
+      "stockID": "7Q4vEC3F",
+      "stockSize": 1000,
+      "remainingAmount": 500,
+      "lastKnownH": "271620e4879700902765a5f46a615e1fd4d451bff0cc720ecfc1051d611c1888",
+      "startDate": 1652207565143,
+      "endDate": 1652207865143,
+      "BuyerAddress": "0x132faBF202567b94E183789A60F0C1ac537D24A2",
+      "h_0": "NaJZB0MQEYUOKMOJGpVi37NIUQ3EU2rNzV8hlIZHeKR7vvpqchqvjzy0UEcPSvL8",
+      "Rest_Given": true
+    }
+  ]
+}

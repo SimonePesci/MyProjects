@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="it" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Metadata -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Script -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+        integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"
+        integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy"
+        crossorigin="anonymous"></script>
+
+    <!-- Link -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+
+    <title>Accesso proibito</title>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">Pinco Pallino S.p.A.</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav ">
+                   <a class="nav-link active" href="/manager">Area Manager</a>
+                   <a class="nav-link active" href="/ingegneri">Area Ingegneri</a>
+                </div>
+              
+                 
+            </div>
+        </div>
+    </nav>
+
+  
+    
+    <header class="head-banner text-white text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-9 mx-auto">
+                    <h1 id="font-title">Accesso Proibito <span th:text="${name}"></span></h1>
+                    <p>Non hai il permesso di accedere a questa sezione</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+  
+
+ 
+
+    <footer class="footer bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 h-100 text-center text-lg-left">
+                    <ul class="list-inline mb-2">
+                        <li class="list-inline-item"></li>
+                    </ul>
+                    <p class="text-muted small mb-4 mb-lg-0">
+                        Pinco Pallino S.p.A's Website 2021. All Rights Reserved.
+                    </p>
+                    <a class="text-muted small mb-4 mb-lg-0" href=”tel:+390116706111”> Contatti: +39 123 456 7890</a> 
+                    <p class="text-muted small mb-4 mb-lg-0">
+                        Indirizzo: Via xxx xxxxxx 10
+                    </p>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,1 @@
+java -jar --module-path javaFX\lib --add-modules=javafx.controls,javafx.fxml,javafx.media FlappyBirdEscape.jar
