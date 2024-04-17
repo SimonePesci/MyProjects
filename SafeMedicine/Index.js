@@ -28,7 +28,7 @@ async function checkIntegrity(req, res) {
 
 app.post('/access-radiology-room', async (req, res) => {
   try {
-      const { userType, tokenID, hospitalID } = req.body; // Assuming these are needed for permission check
+      const { userType, tokenID, hospitalID } = req.body; 
 
       let permissionGranted = await checkPermission(userType, tokenID, hospitalID, 0x10);
 
@@ -47,7 +47,7 @@ app.post('/access-radiology-room', async (req, res) => {
 
 app.post('/access-cardiology-room', async (req, res) => {
   try {
-      const { userType, tokenID, hospitalID } = req.body; // Assuming these are needed for permission check
+      const { userType, tokenID, hospitalID } = req.body; 
 
       let permissionGranted = await checkPermission(userType, tokenID, hospitalID, 0x20);
 
@@ -66,20 +66,20 @@ app.post('/access-cardiology-room', async (req, res) => {
 });
 
 
-// Endpoint to call your function
+
 app.post('/check-integrity', async (req, res) => {
     const { EMR_index_value } = req.body;
     const isValid = await checkIntegrity(EMR_index_value);
     res.json({ valid: isValid });
 });
 
-// Assuming you have Express and other necessary setups done
+
 app.post('/create-user', async (req, res) => {
   try {
-      // Extract user details from request body
+      
       const { userType, address, name, surname, taxCode } = req.body;
 
-      // Assuming createUser returns an array [address, tokenID, name, surname, taxCode]
+     
       const userDetailsArray = await createUser(userType, address, name, surname, taxCode);
 
       // Convert array to object for easier usage in frontend
@@ -101,19 +101,19 @@ app.post('/create-user', async (req, res) => {
 
 app.post('/add-new-EMR', async (req, res) => {
   try {
-      // Estrae i dati dal corpo della richiesta
+      
       const { userType, tokenID, hospitalID, newValue } = req.body;
 
-      // Chiama la funzione e ottiengo i risultati
+      // Calls add_New_EMR to get results
       const addResults = await add_New_EMR(userType, tokenID, hospitalID, newValue);
       
-      // Imposta un messaggio finale basato sull'esito dell'operazione
+      // Set a message according to result
       let finalMessage = "New EMR added successfully";
       if(addResults.permissionGranted == false) { 
           finalMessage = "Permissions not granted"; 
       }
 
-      // Invia i risultati al client
+      // Sends to client
       res.json({ 
           success: true, 
           message: finalMessage,
@@ -131,7 +131,7 @@ app.post('/add-new-EMR', async (req, res) => {
 
 app.post('/assign-permission', async (req, res) => {
   try {
-      // Estrae i dati dal corpo della richiesta
+      
       const { userType, tokenID, hospitalID, permission } = req.body;
       
 
@@ -146,14 +146,14 @@ app.post('/assign-permission', async (req, res) => {
 
 app.post('/verify-permission', async (req, res) => {
   try {
-      // Estrae i dati dal corpo della richiesta
+      
       const { userType, tokenID, hospitalID } = req.body;
 
-      // Restituisce il set di permessi per quell'ospedale
+      // Returns permissions set for an hospital
       const permissionSet = await getHospitalPermissions(userType, tokenID, hospitalID);
 
       
-      // Invia i risultati al client
+      // Sends to client
       res.json({ success: true,
                    message: "Permissions retrieved successfully." ,
                    permission: permissionSet
@@ -170,20 +170,20 @@ app.post('/verify-permission', async (req, res) => {
 
 app.post('/update-emr', async (req, res) => {
   try {
-      // Estrae i dati dal corpo della richiesta
+      
       const { userType, tokenID, hospitalID, EMR_To_Update, new_EMR_Value } = req.body;
 
-      // Chiama la funzione e ottiengo i risultati
+      // Returns functions results
       const updateResults = await updateEMR(userType, tokenID, hospitalID, EMR_To_Update, new_EMR_Value);
       
       let finalMessage = "EMR updated successfully";
       if(updateResults.permissionGranted == false ){ finalMessage = "Permissions not granted"}
       
-      // Invia i risultati al client
+      // Sends to client
       res.json({ 
           success: true, 
           message: finalMessage,
-          updateInfo: updateResults // Include additional data as needed
+          updateInfo: updateResults
       });
   } catch (error) {
       console.error('Error updating EMR:', error);
@@ -192,21 +192,6 @@ app.post('/update-emr', async (req, res) => {
 });
 
 
-
-
-
-
-
-
-let EMRValues = [
-    "0X5B38DA6A701C568545DCFCB03FCB875F56BEDDC4",
-    "0X5A641E5FB72A2FD9137312E7694D42996D689D99",
-    "0XDCAB482177A592E424D1C8318A464FC922E8DE40",
-    "0X6E21D37E07A6F7E53C7ACE372CEC63D4AE4B6BD0",
-    "0X09BAAB19FC77C19898140DADD30C4685C597620B",
-    "0XCC4C29997177253376528C05D3DF91CF2D69061A",
-    "0xdD870fA1b7C4700F2BD7f44238821C26f7392147"
-  ];
 
 const owner = "0x12b405F1a1a4A11479E670E0af39312E771Ff38F";
 

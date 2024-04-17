@@ -180,45 +180,6 @@ contract HospitalToken is ERC1155, Ownable {
         return owner;
     }
 
-    
-
-    /* Returns all the permissions assiociated to the token
-    function getPermissions() public view returns ( bytes[] ) {
-        
-        accessRights[] 
-        bytes memory accessRights[];
-        for (uint256 i = 0; i < tokenHospitalAccessRights[tokenId][tokenIndex].length; i++) {
-            if (tokenHospitalAccessRights[tokenId][tokenIndex][i].hospitalId == hospitalId) {
-                accessRights[i] = tokenHospitalAccessRights[tokenId][tokenIndex][i].accessRights;
-            }
-        }
-        return accessRights[];
 
 
-    }
-
-
-    // Override uri to include token access rights information for all associated hospitals
-    function uri(uint256 tokenId) public view override returns (string memory) {
-        HospitalAccess[] storage accesses = tokenHospitalAccessRights[tokenId];
-        require(accesses.length > 0, "URI: nonexistent token");
-
-        string memory baseURI = super.uri(tokenId);
-        string memory accessRightsPart;
-
-        for (uint256 i = 0; i < accesses.length; i++) {
-            // You'll need to define how you want to represent each set of access rights
-            accessRightsPart = string(abi.encodePacked(accessRightsPart, "hospital", accesses[i].hospitalId.toString(), "=", accesses[i].accessRights, "&"));
-        }
-
-        return string(abi.encodePacked(baseURI, "?", accessRightsPart));
-    }
-
-
-    */
-
-    
-
-
-    // ... Additional functions and modifiers ...
 }

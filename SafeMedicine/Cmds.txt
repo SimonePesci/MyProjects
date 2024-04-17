@@ -1,24 +1,14 @@
 node -p "require('./fileName').funName('param')"
 
-ConnectMyToken
-node -p "require('./ConnectMyToken.js').checkIntegrity('1')"
-node -p "require('./ConnectMyToken.js').addNewNode("newValue")"
-node -p "require('./ConnectMyToken.js').createUser('doctor', '0x186Df72607314C629297e952cC87212491ECC096' , 'Gianni' , 'Scotti' , 'GS99')"
-node -p "require('./ConnectMyToken.js').assignPermission()"
-node -p "require('./ConnectMyToken.js').getHospitalPermissions('doctor', '1', '1')"
+Index.js
+node -p "require('./Index.js').checkIntegrity('1')"
+node -p "require('./Index.js').addNewNode("newValue")"
+node -p "require('./Index.js').createUser('doctor', '0x186Df72607314C629297e952cC87212491ECC096' , 'Gianni' , 'Scotti' , 'GS99')"
+node -p "require('./Index.js').assignPermission()"
+node -p "require('./Index.js').getHospitalPermissions('doctor', '1', '1')"
 
-node -p "require('./ConnectMyToken.js').checkPermission('doctor', '1','1', '0x01')"
-node -p "require('./ConnectMyToken.js').updateEMR('0X5B38DA6A701C568545DCFCB03FCB875F56BEDDC4', '0X5B38DA6A701C568545DCFCB03FCB875F56BEDDC5')"
-
-
+node -p "require('./Index.js').checkPermission('doctor', '1','1', '0x01')"
+node -p "require('./Index.js').updateEMR('0X5B38DA6A701C568545DCFCB03FCB875F56BEDDC4', '0X5B38DA6A701C568545DCFCB03FCB875F56BEDDC5')"
 
 
-function getLastMintedUser(uint256 tokenType, address accountowner) public view returns (address account, uint256 tokenId, string name, string surname, string taxCode) {
-      //uint256 tokenID;
-      //require(balanceOf(accountowner, tokenType) > 0, "Address does not own this token type.");
-      //tokenID = tokenPossession[accountowner][tokenType];
-        
-        
-     //return (accountowner, tokenID, tokenPersonalData[tokenType][tokenID].name , tokenPersonalData[tokenType][tokenID].surname , tokenPersonalData[tokenType][tokenID].taxCode);
-    
-    }
+

@@ -4,7 +4,7 @@ pragma solidity ^0.8.9;
 contract MerkleTree {
     // --- PROPERTIES ---- //
 
-    // Calculated from `ConnectMyToken.js`
+    // Calculated from EMRs in EMRValues.json
     bytes32 public merkleRoot = 
         0x15a4aec3ac5176a58a762443f28aca1bb501446a13b0398542e30a257a6367d7;
         
