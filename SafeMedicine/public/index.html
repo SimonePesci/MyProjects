@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMR Integrity Check</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="loginPage">
+        <h2>Login</h2>
+        <div id="userLogin">
+            <input type="text" id="userUsername" placeholder="User Username">
+            <input type="password" id="userPassword" placeholder="User Password">
+            <button onclick="login('user')">Login as User</button>
+        </div>
+        <div id="adminLogin">
+            <input type="text" id="adminUsername" placeholder="Admin Username">
+            <input type="password" id="adminPassword" placeholder="Admin Password">
+            <button onclick="login('admin')">Login as Admin</button>
+        </div>
+    </div>
+
+    <div id="mainPage2" style="display:none;">
+        <h2>Access Room</h2>
+        <div class="tab">
+            <button class="tablinks" onclick="openTab(event, 'AccessradiologyRoom')">Access Radiology Room</button>
+            <button class="tablinks" onclick="openTab(event, 'AccesscardiologyRoom')">Access Cardiology Room</button>
+            <button class="tablinks" onclick="openTab(event, 'add_New_EMR')">Add New EMR</button>
+            <button class="tablinks" onclick="openTab(event, 'UpdateEMR')">Update EMR</button>
+        </div>
+    
+        <!-- Tab content for Access radiology Room -->
+        <div id="AccessradiologyRoom" class="tabcontent">
+            <h3>Access radiology Room</h3>
+
+            <label for="radiologyUserType">User Type: </label>
+            <select id="radiologyUserType">
+                <option value="doctor">Doctor</option>
+                <option value="patient">Patient</option>
+                <option value="assistant">Assistant</option>
+            </select>
+
+            <label for="radiologyTokenID">Token ID: </label>
+            <input type="text" id="radiologyTokenID" placeholder="Enter User's Token ID">
+
+            <label for="radiologyHospitalID">Hospital ID: </label>
+            <input type="text" id="radiologyHospitalID" placeholder="Enter Hospital ID">
+
+            <button onclick="accessradiologyRoom()">Request Access</button>
+            <p id="radiologyRoomAccessResult"></p>
+        </div>
+    
+        <!-- Tab content for Access cardiology Room -->
+        <div id="AccesscardiologyRoom" class="tabcontent">
+            <h3>Access cardiology Room</h3>
+
+            <label for="cardiologyUserType">User Type: </label>
+            <select id="cardiologyUserType">
+                <option value="doctor">Doctor</option>
+                <option value="patient">Patient</option>
+                <option value="assistant">Assistant</option>
+            </select>
+
+            <label for="cardiologyTokenID">Token ID: </label>
+            <input type="text" id="cardiologyTokenID" placeholder="Enter User's Token ID">
+
+            <label for="cardiologyHospitalID">Hospital ID: </label>
+            <input type="text" id="cardiologyHospitalID" placeholder="Enter Hospital ID">
+
+
+            <button onclick="accesscardiologyRoom()">Request Access</button>
+            <p id="cardiologyRoomAccessResult"></p>
+        </div>
+
+        <div id="add_New_EMR" class="tabcontent">
+            <h3>Add New EMR</h3>
+            <label for="userType">User Type:</label>
+            <select id="userType">
+                <option value="doctor">Doctor</option>
+                <option value="patient">Patient</option>
+                <option value="assistant">Assistant</option>
+            </select>
+
+            <label for="tokenID">Token ID:</label>
+            <input type="text" id="tokenID" placeholder="Enter Token ID" class="input">
+
+            <label for="hospitalID">Hospital ID:</label>
+            <input type="text" id="hospitalID" placeholder="Enter Hospital ID" class="input">
+
+            <label for="newValue">New EMR: </label>
+            <input type="text" id="newValue" placeholder="Enter new EMR value" class="input">
+            <button onclick="add_New_EMR()">Add EMR</button>
+            <p id="addNodeResult"></p>
+        </div>
+
+        <div id="UpdateEMR" class="tabcontent">
+            <h3>Update EMR</h3>
+            <label for="updateUserType">User Type:</label>
+            <select id="updateUserType" class="input">
+                <option value="doctor">Doctor</option>
+                <option value="patient">Patient</option>
+                <option value="assistant">Assistant</option>
+            </select>
+        
+            <label for="updateTokenID">Token ID:</label>
+            <input type="text" id="updateTokenID" placeholder="Enter User's Token ID" class="input">
+        
+            <label for="updateHospitalID">Hospital ID:</label>
+            <input type="text" id="updateHospitalID" placeholder="Enter Hospital ID" class="input">
+        
+            <label for="emrToUpdate">EMR to Update:</label>
+            <input type="text" id="emrToUpdate" placeholder="Enter EMR to update" class="input">
+        
+            <label for="newEmrValue">New EMR Value:</label>
+            <input id="newEmrValue" placeholder="Enter new EMR value" class="input">
+        
+            <button onclick="updateEMR()">Update EMR</button>
+            <p id="updateEmrResult"></p>
+        </div>
+
+
+
+    </div>
+    
+
+    <div id="mainPage" style="display:none;">
+        <h2>Control Room</h2>
+        <div class="tab">
+            <button class="tablinks" onclick="openTab(event, 'CreateUser')">Create User</button>
+            <button class="tablinks" onclick="openTab(event, 'AssignPermission')">Assign Permission</button>
+            <button class="tablinks" onclick="openTab(event, 'CheckIntegrity')">Check Integrity</button>
+            <button class="tablinks" onclick="openTab(event, 'VerifyPermissions')">Verify Permissions</button>
+        </div>
+
+        <!-- Tab content for Create User -->
+        <div id="CreateUser" class="tabcontent">
+            <h3>Create User</h3>
+
+            <label for="userType">User Type: </label>
+            <select id="userType">
+                <option value="doctor">Doctor</option>
+                <option value="patient">Patient</option>
+                <option value="assistant">Assistant</option>
+            </select>
+
+            <label for="ethereumAddress">Eth Address: </label>
+            <input type="text" id="ethereumAddress" placeholder="Ethereum Address" class="input">
+
+            <label for="userName">Name: </label>
+            <input type="text" id="userName" placeholder="Name" class="input">
+
+            <label for="userSurname">Surname: </label>
+            <input type="text" id="userSurname" placeholder="Surname" class="input">
+
+            <label for="userTaxCode">TaxCode: </label>
+            <input type="text" id="userTaxCode" placeholder="Tax Code" class="input">
+
+
+            <button onclick="createUser()">Create User</button>
+            <p id="createUserResult"></p>
+        </div>
+
+
+        <!-- Tab content -->
+        <div id="CheckIntegrity" class="tabcontent">
+            <h3>Check Integrity</h3>
+            <button onclick="checkEMRIntegrity()">Check</button>
+            <p id="integrityResult"></p>
+        </div>
+
+
+        <div id="add_New_EMR" class="tabcontent">
+            <h3>Add New EMR</h3>
+            <input type="text" id="userType" placeholder="Enter User Type" class="input">
+            <input type="text" id="tokenID" placeholder="Enter Token ID" class="input">
+            <input type="text" id="hospitalID" placeholder="Enter Hospital ID" class="input">
+            <input type="text" id="newValue" placeholder="Enter new EMR value" class="input">
+            <button onclick="add_New_EMR()">Add EMR</button>
+            <p id="addNodeResult"></p>
+        </div>
+        
+
+        <div id="AssignPermission" class="tabcontent">
+            <h3>Assign Permission</h3>
+            <label for="assignUserType">User Type:</label>
+            <select id="assignUserType" class="input">
+                <option value="doctor">Doctor</option>
+                <option value="patient">Patient</option>
+                <option value="assistant">Assistant</option>
+            </select>
+        
+            <label for="assignTokenID">Token ID:</label>
+            <input type="text" id="assignTokenID" placeholder="Enter User's Token ID" class="input">
+        
+            <label for="assignHospitalID">Hospital ID:</label>
+            <input type="text" id="assignHospitalID" placeholder="Enter Hospital ID" class="input">
+        
+            <label for="assignPermission">Permission:</label>
+            <input type="text" id="assignPermission" placeholder="Enter Permission Code" class="input"> <!-- Assuming permission code is static -->
+        
+            <button onclick="assignPermission()">Assign Permission</button>
+            <p id="assignPermissionResult"></p>
+        </div>
+
+        <!-- Contenuto della tab Verify Permissions -->
+        <div id="VerifyPermissions" class="tabcontent">
+            <h3>Verify Permissions</h3>
+
+            <label for="verifyUserType">User Type: </label>
+            <select id="verifyUserType">
+                <option value="doctor">Doctor</option>
+                <option value="patient">Patient</option>
+                <option value="assistant">Assistant</option>
+            </select>
+
+            <label for="verifyTokenID">Token ID: </label>
+            <input type="text" id="verifyTokenID" placeholder="Enter User's Token ID" class="input">
+
+            <label for="verifyHospitalID">Hospital ID: </label>
+            <input type="text" id="verifyHospitalID" placeholder="Enter Hospital ID" class="input">
+
+            <button onclick="verifyPermission()">Verify Permissions</button>
+            <p id="verifyPermissionResult"></p>
+        </div>
+
+
+        <div id="UpdateEMR" class="tabcontent">
+            <h3>Update EMR</h3>
+            <label for="updateUserType">User Type:</label>
+            <select id="updateUserType" class="input">
+                <option value="doctor">Doctor</option>
+                <option value="patient">Patient</option>
+                <option value="assistant">Assistant</option>
+            </select>
+        
+            <label for="updateTokenID">Token ID:</label>
+            <input type="text" id="updateTokenID" placeholder="Enter User's Token ID" class="input">
+        
+            <label for="updateHospitalID">Hospital ID:</label>
+            <input type="text" id="updateHospitalID" placeholder="Enter Hospital ID" class="input">
+        
+            <label for="emrToUpdate">EMR to Update:</label>
+            <input type="text" id="emrToUpdate" placeholder="Enter EMR to update" class="input">
+        
+            <label for="newEmrValue">New EMR Value:</label>
+            <input id="newEmrValue" placeholder="Enter new EMR value" class="input">
+        
+            <button onclick="updateEMR()">Update EMR</button>
+            <p id="updateEmrResult"></p>
+        </div>
+        
+        
+
+    <script src="script.js"></script> <!-- Link to your JavaScript file -->
+</body>
+</html>
